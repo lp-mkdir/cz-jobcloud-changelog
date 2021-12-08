@@ -11,7 +11,6 @@ var options = {
   defaultScope: process.env.CZ_SCOPE || config.defaultScope,
   defaultSubject: process.env.CZ_SUBJECT || config.defaultSubject,
   defaultBody: process.env.CZ_BODY || config.defaultBody,
-  defaultIssues: process.env.CZ_ISSUES || config.defaultIssues,
   disableScopeLowerCase:
     process.env.DISABLE_SCOPE_LOWERCASE || config.disableScopeLowerCase,
   disableSubjectLowerCase:
@@ -25,13 +24,13 @@ var options = {
     (process.env.CZ_MAX_LINE_WIDTH &&
       parseInt(process.env.CZ_MAX_LINE_WIDTH)) ||
     config.maxLineWidth ||
-    100
+    100,
 };
 
-(function(options) {
+(function (options) {
   try {
     var commitlintLoad = require('@commitlint/load');
-    commitlintLoad().then(function(clConfig) {
+    commitlintLoad().then(function (clConfig) {
       if (clConfig.rules) {
         var maxHeaderLengthRule = clConfig.rules['header-max-length'];
         if (
